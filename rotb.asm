@@ -149,6 +149,8 @@ rndtable_end	equ *
 
 	section "RAMCODE"
 	
+	setdp DPVARS >> 8
+
 	org CFG_RAMCODE_ORG
 	put CFG_RAMCODE_PUT
 
@@ -274,6 +276,8 @@ code_entry
 ;**********************************************************
 	
 	section "CODE"
+
+	setdp DPVARS >> 8
 
 	org CFG_CODE_ADDR
 
