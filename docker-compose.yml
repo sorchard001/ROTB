@@ -4,7 +4,7 @@ services:
   buildv:
     build: .
     command: bash -c "
-      rm *.dsk &&
+      rm -f *.dsk &&
       echo Build the CoCo version of ROTB &&
       asm6809 -C -o ROTB.BIN rotb.asm &&
       decb dskini rotb-coco.dsk &&
