@@ -51,7 +51,7 @@ CFG_RAMCODE_ORG		equ __end_data
 
 ; macro to set video mode
 CFG_MAC_SET_VIDMODE macro
-	lda #$e0
+	lda #$c0
 	sta $ff22
     sta $ffc5
 	endm

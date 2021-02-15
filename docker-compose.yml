@@ -3,7 +3,9 @@ version: '3'
 services:
   buildv:
     build: .
-    command: bash -c "echo Build the CoCo version of ROTB &&
+    command: bash -c "
+      rm *.dsk &&
+      echo Build the CoCo version of ROTB &&
       asm6809 -C -o ROTB.BIN rotb.asm &&
       decb dskini rotb-coco.dsk &&
       decb copy ROTB.BIN rotb-coco.dsk,ROTB.BIN &&
@@ -14,6 +16,13 @@ services:
       decb dskini rotb-dragon.dsk &&
       decb copy ROTB.BIN rotb-dragon.dsk,ROTB.BIN &&
       decb attr rotb-dragon.dsk,ROTB.BIN -2"
+    volumes:
+    -  .:/root/rotb
+
+  cleanv:
+    build: .
+    command: bash -c "
+      rm -f *.dsk"
     volumes:
     -  .:/root/rotb
 

@@ -49,4 +49,5 @@
 
 # Executables
 *.dsk
-
+rotb.bin
+cfg
