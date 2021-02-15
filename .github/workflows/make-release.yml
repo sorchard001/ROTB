@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - name: Build disk images
+        run: docker-compose run buildv
       - name: Get the tag
         run: |
           echo "RELEASE_TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
