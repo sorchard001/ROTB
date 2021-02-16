@@ -1,5 +1,5 @@
 FROM jamieleecho/coco-dev:0.34
-MAINTAINER Jamie Cho version: 0.0
+MAINTAINER Jamie Cho version: 0.1
 
 # Install asm6809
 RUN apt-get install -y autoconf && \
