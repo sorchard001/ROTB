@@ -51,3 +51,6 @@
 *.dsk
 rotb.bin
 cfg
+
+# macOS Stuff
+.DS_Store
