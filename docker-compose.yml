@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  buildv:
+    build: .
+    command: bash -c "
+      rm -f *.dsk &&
+      echo Build the CoCo version of ROTB &&
+      asm6809 --define=COCO=1 -C -o ROTB.BIN rotb.asm &&
+      decb dskini rotb-coco.dsk &&
+      decb copy ROTB.BIN rotb-coco.dsk,ROTB.BIN &&
+      decb attr rotb-coco.dsk,ROTB.BIN -2 &&
+      echo Build the Dragon version of ROTB &&
+      rm ROTB.BIN &&
+      asm6809 -D -o ROTB.BIN rotb.asm &&
+      decb dskini rotb-dragon.dsk &&
+      decb copy ROTB.BIN rotb-dragon.dsk,ROTB.BIN &&
+      decb attr rotb-dragon.dsk,ROTB.BIN -2"
+    volumes:
+    -  .:/root/rotb
+
+  cleanv:
+    build: .
+    command: bash -c "
+      rm -f *.dsk"
+    volumes:
+    -  .:/root/rotb
+
+  bash:
+    build: .
+    command: bash
+
+  bashv:
+    build: .
+    command: bash
+    volumes:
+    -  .:/root/rotb
+

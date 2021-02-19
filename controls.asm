@@ -49,7 +49,11 @@ scan_keys
 
 control_keys
 
-	lda #$20
+	if (COCO == 1)
+		lda #$08;
+	else
+		lda #$20;
+	endif
 
 	; UP
 	bita keytable+3
@@ -71,7 +75,11 @@ control_keys
 	dec player_dir
 2
 	; SPACE - FIRE
-1	lda #$20
+	if (COCO == 1)
+1		lda #$08;
+	else
+1		lda #$20;
+	endif
 	bita keytable+7
 	beq control_fire
 	rts
@@ -162,7 +170,11 @@ select_controls
 	std control_set
 	clra
 	rts
-1	lda #$20
+	if (COCO == 1)
+1		lda #$08
+	else
+1		lda #$20
+	endif
 	bita keytable+7
 	bne 1f
 	ldd #control_keys

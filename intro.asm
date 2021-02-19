@@ -88,7 +88,11 @@ intro_loop
 	lda #$7f		; check for spacebar
 	sta $ff02		;
 	lda $ff00		;
-	bita #$20		;
+	if (COCO == 1)
+		bita #$08;
+	else
+		bita #$20;
+	endif
 	bne 1b			; spacebar not pressed
 	
 2	puls dp
