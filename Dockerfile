@@ -1,4 +1,4 @@
-FROM jamieleecho/coco-dev:0.34
+FROM jamieleecho/coco-dev:latest
 MAINTAINER Jamie Cho version: 0.1
 
 # Install asm6809
